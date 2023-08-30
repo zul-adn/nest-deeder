@@ -11,7 +11,16 @@ export class Flow {
     organization_uuid: string;
 
     @Prop()
+    name: string;
+
+    @Prop()
     flow: string;
+
+    @Prop()
+    nodes: string;
+
+    @Prop()
+    edges: string;
 }
 
 export const FlowSchema = SchemaFactory.createForClass(Flow)

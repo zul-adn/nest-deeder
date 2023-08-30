@@ -10,3 +10,6 @@ export class AppController {
     return this.appService.getHello();
   }
 }
+
+//DB_STRING = mongodb+srv://dev:izFImrb4k1xk7USV@restoapp-dev.5cpcgpv.mongodb.net/?retryWrites=true&w=majority
+//"start_dev: "node dist/main",
