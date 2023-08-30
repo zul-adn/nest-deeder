@@ -21,8 +21,9 @@ export class FlowService {
     return response
   }
 
-  findAll() {
-    return `This action returns all flow`;
+  async findAll():Promise<Flow[]> {
+    const response = await this.flowModel.find()
+    return response
   }
 
   findOne(id: number) {
