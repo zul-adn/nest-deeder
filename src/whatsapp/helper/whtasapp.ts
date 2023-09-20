@@ -1,6 +1,6 @@
 const accountSID = process.env.TWILIO_ACCOUNT_SID
 const authToken = process.env.TWILIO_AUTH_TOKEN
-const client = require('twilio')('AC0d487990407f93be50b2affd9b1afc7f', '05f52ee396a3b9f254cecc3e7f0da1f1')
+const client = require('twilio')(accountSID, authToken)
 
 // get initial message
 const getInitialMessage = async(arr: any) => {
