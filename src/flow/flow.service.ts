@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import {InjectModel} from '@nestjs/mongoose';
 import { CreateFlowDto } from './dto/create-flow.dto';
 import { UpdateFlowDto } from './dto/update-flow.dto';
@@ -26,8 +26,10 @@ export class FlowService {
     return response
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} flow`;
+  findByUUID(id: string) {
+    const response = this.flowModel.findById(id)
+    if(!response) throw new NotFoundException('Flow Not Found')
+    return response;
   }
 
   update(id: number, updateFlowDto: UpdateFlowDto) {

@@ -9,12 +9,15 @@ import { OwnerModule } from './owner/owner.module';
 import { MenuModule } from './menu/menu.module';
 import { AllergyModule } from './allergy/allergy.module';
 import { FlowModule } from './flow/flow.module';
+import { WhatsappModule } from './whatsapp/whatsapp.module';
+import { CacheModule } from '@nestjs/cache-manager';
+
 
 
 @Module({
-  imports: [ConfigModule.forRoot({
+  imports:[ConfigModule.forRoot({
     envFilePath: '.env',
-    isGlobal: true
+    isGlobal: true 
   }), 
   MongooseModule.forRoot(process.env.DB_STRING),
   RestoModule,
@@ -22,7 +25,10 @@ import { FlowModule } from './flow/flow.module';
   OwnerModule,
   MenuModule,
   AllergyModule,
-  FlowModule],
+  FlowModule,
+  WhatsappModule,
+  
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
