@@ -15,7 +15,7 @@ export class MessageTemplateController {
 
     let config = {
       headers: {
-        'Authorization': 'Bearer EAAEkVQKZCdX0BO8xGNHxrhITlNfs9kYUA7XwZAf2Sfo6VIMdv5dsc1zcIu7GPdRZAvBmrfmCwJtvZCI0LMz1WoLzCBURoqSkrNQtpDSuj9KhXf0KN2yXmKmYUbZAMGSJZAejgPyuRDZAZBkCrWcSp979cOIRis8tl7DzuTT3jjx1SHLS0ylyvVbt0J1OeIvuedYhxb0UW5d7JvxDU1bPWBwI',
+        'Authorization': process.env.FACEBOOK_AUTH_TOKEN,
         'Content-Type': 'application/json' 
       }
     }
@@ -34,13 +34,12 @@ export class MessageTemplateController {
 
     let config = {
       headers: {
-        'Authorization': 'Bearer EAAEkVQKZCdX0BO8xGNHxrhITlNfs9kYUA7XwZAf2Sfo6VIMdv5dsc1zcIu7GPdRZAvBmrfmCwJtvZCI0LMz1WoLzCBURoqSkrNQtpDSuj9KhXf0KN2yXmKmYUbZAMGSJZAejgPyuRDZAZBkCrWcSp979cOIRis8tl7DzuTT3jjx1SHLS0ylyvVbt0J1OeIvuedYhxb0UW5d7JvxDU1bPWBwI',
+        'Authorization': process.env.FACEBOOK_AUTH_TOKEN,
         'Content-Type': 'application/json' 
       }
     }
 
     const data = await axios.get('https://graph.facebook.com/v18.0/131314553397423/message_templates?limit=50', config)
-    console.log(data.data)
 
     return this.messageTemplateService.findAll(data.data);
   }
