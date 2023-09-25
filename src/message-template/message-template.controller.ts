@@ -15,7 +15,7 @@ export class MessageTemplateController {
 
     let config = {
       headers: {
-        'Authorization': process.env.FACEBOOK_AUTH_TOKEN,
+        'Authorization': `Bearer ${process.env.FACEBOOK_AUTH_TOKEN}`,
         'Content-Type': 'application/json' 
       }
     }
@@ -32,16 +32,24 @@ export class MessageTemplateController {
   @Get()
   async findAll() {
 
-    let config = {
-      headers: {
-        'Authorization': process.env.FACEBOOK_AUTH_TOKEN,
-        'Content-Type': 'application/json' 
+    try {
+      console.log(process.env.FACEBOOK_AUTH_TOKEN)
+
+      let config = {
+        headers: {
+          'Authorization': `Bearer ${process.env.FACEBOOK_AUTH_TOKEN}`,
+          'Content-Type': 'application/json' 
+        }
       }
+  
+      const data = await axios.get('https://graph.facebook.com/v18.0/131314553397423/message_templates?limit=50', config)
+     
+      return this.messageTemplateService.findAll(data.data);
+    } catch (error) {
+        console.log(error)
     }
 
-    const data = await axios.get('https://graph.facebook.com/v18.0/131314553397423/message_templates?limit=50', config)
-
-    return this.messageTemplateService.findAll(data.data);
+    
   }
 
   @Get(':id')
