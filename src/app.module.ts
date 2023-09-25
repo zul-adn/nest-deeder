@@ -11,6 +11,7 @@ import { AllergyModule } from './allergy/allergy.module';
 import { FlowModule } from './flow/flow.module';
 import { WhatsappModule } from './whatsapp/whatsapp.module';
 import { CacheModule } from '@nestjs/cache-manager';
+import { MessageTemplateModule } from './message-template/message-template.module';
 
 
 
@@ -27,6 +28,7 @@ import { CacheModule } from '@nestjs/cache-manager';
   AllergyModule,
   FlowModule,
   WhatsappModule,
+  MessageTemplateModule,
   
   ],
   controllers: [AppController],
